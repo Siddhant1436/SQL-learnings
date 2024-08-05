@@ -1,0 +1,60 @@
+//Like
+//If You Want to Match Any Part of the Number Containing "345"
+SELECT CustomerID, FirstName, LastName, Email, Phone
+FROM Customers
+WHERE Phone LIKE '%345%';
+
+//starting from 345
+WHERE Phone LIKE '345%';
+
+//ending with 345
+WHERE phone LIKE '%345'
+
+
+
+//IN
+
+//it gives all the rows whose name is Walmart, Apple & Target
+//for non-numeric values have to use ''
+
+SELECT name, primary_poc,sales_rep_id FROM accounts
+where name IN('Walmart', 'Apple', 'Target')
+
+
+//NOT
+//Find all customers who are not from a specific city.
+WHERE City NOT = 'New York';
+
+//Find all products that do not have  name starting with 'A'.
+WHERE ProductName NOT LIKE 'A%';
+
+//Find all employees who are not in specific departments.
+WHERE Department NOT IN ('HR', 'Finance', 'Marketing');
+
+
+
+
+
+
+//AND , OR
+
+//Find all employees who are in either 'HR' or 'Finance' and have been employed for more than 5 years.
+WHERE (Department = 'HR' OR Department = 'Finance') AND HireDate < DATEADD(year, -5, GETDATE());
+
+
+
+
+//BETWEEN
+
+//between is an inclusive operator, it includes start and end points
+
+WHERE Price BETWEEN 10 AND 50;
+
+//Find all orders placed between January 1, 2022, and December 31, 2022.
+WHERE OrderDate BETWEEN '2022-01-01' AND '2022-12-31';
+
+//Find all customers whose last names fall between 'A' and 'M' in alphabetical order.
+WHERE LastName BETWEEN 'A' AND 'M';
+
+//Find all the company names that start with a 'C' or 'W', and the primary contact contains 'ana' or 'Ana'
+SELECT * FROM accounts WHERE (name LIKE 'C%' OR name LIKE 'W%') AND (primary_poc LIKE '%ana%' OR primary_poc LIKE '%ANA%')
